@@ -1,9 +1,13 @@
 services:
   web:
-    build: .
+    container_name: web-app
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8000:80"
     environment:
       - DB_USER=admin
       - DB_PASSWORD=secret
       - DB_NAME=test.db
+    restart: unless-stopped
